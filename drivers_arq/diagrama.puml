@@ -1,0 +1,71 @@
+@startuml
+title Diagrama UML de Drivers Arquitectónicos - MiCompañero.com
+left to right direction
+
+' Actores
+actor "Alumno" as Alumno
+actor "Administrador" as Admin
+actor "Sistema (interno)" as Sistema
+
+' Casos de uso funcionales
+package "Casos de Uso Principales" {
+    usecase "Registrar evaluación de compañero" as UC1
+    usecase "Consultar promedios y estadísticas" as UC2
+    usecase "Autenticación" as UC3
+    usecase "Administración del sistema" as UC4
+    usecase "Experiencia de usuario (Frontend responsivo)" as UC5
+    usecase "Escalabilidad del sistema" as UC6
+}
+
+' Casos de uso de drivers arquitectónicos
+package "Drivers Arquitectónicos" {
+    usecase "Seguridad" as DR1
+    usecase "Anonimato" as DR2
+    usecase "Integridad de datos" as DR3
+    usecase "Rendimiento" as DR4
+    usecase "Usabilidad" as DR5
+    usecase "Mantenibilidad" as DR6
+    usecase "Escalabilidad" as DR7
+}
+
+' Conexiones Actor -> Casos de Uso
+Alumno --> UC1
+Alumno --> UC2
+Alumno --> UC3
+Alumno --> UC5
+Admin --> UC4
+Admin --> UC5
+Sistema --> UC6
+
+' Conexiones Casos de Uso -> Drivers
+UC1 --> DR1
+UC1 --> DR2
+UC1 --> DR3
+UC1 --> DR4
+
+UC2 --> DR4
+UC2 --> DR5
+UC2 --> DR7
+
+UC3 --> DR1
+UC3 --> DR5
+
+UC4 --> DR6
+UC4 --> DR7
+
+UC5 --> DR4
+UC5 --> DR5
+
+UC6 --> DR6
+UC6 --> DR7
+
+' Opcional: notas para clarificar
+note right of DR2
+    Opcional anonimato en evaluaciones
+end note
+
+note right of DR4
+    Rendimiento de consultas y envíos
+end note
+
+@enduml
