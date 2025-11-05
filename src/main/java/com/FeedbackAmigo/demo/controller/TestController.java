@@ -12,11 +12,16 @@ public class TestController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "Hello World";
+        return "Hola, equipo Feedback Amigo";
     }
 
     @GetMapping("/goodbye")
     public String goodbye() {
-        return "Goodbye World";
+        return "Adiós, equipo Feedback Amigo";
+    }
+
+    @GetMapping("/ivonne")
+    public String ivonne() {
+        return "Hola, soy Ivonne.<br>Integrante del equipo Feedback Amigo";
     }
 }
