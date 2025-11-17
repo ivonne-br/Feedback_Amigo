@@ -1,6 +1,6 @@
 package com.FeedbackAmigo.demo.controller;
 
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +24,12 @@ public class TestController {
     public String ivonne() {
         return "Hola, soy Ivonne.<br>Integrante del equipo Feedback Amigo";
     }
+
+    @GetMapping("/alany")
+    public String alany() {
+        return "Hola, soy AlanY.<br>Integrante del equipo Feedback Amigo";
+    }
+
     @GetMapping("/alang")
     public String alang() {
         return "Hola, soy Alang.<br>Integrante del equipo Feedback Amigo";
