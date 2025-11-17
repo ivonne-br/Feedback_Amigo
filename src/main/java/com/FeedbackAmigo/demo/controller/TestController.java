@@ -24,8 +24,15 @@ public class TestController {
     public String ivonne() {
         return "Hola, soy Ivonne.<br>Integrante del equipo Feedback Amigo";
     }
+
     @GetMapping("/alang")
     public String alang() {
         return "Hola, soy Alang.<br>Integrante del equipo Feedback Amigo";
+    }
+
+    @GetMapping("/sebastian")
+    public String sebastian() {
+        return "Hola equipo, soy Sebastián.";
+
     }
 }
