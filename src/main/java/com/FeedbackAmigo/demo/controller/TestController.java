@@ -30,4 +30,8 @@ public class TestController {
         return "Hola, soy AlanY.<br>Integrante del equipo Feedback Amigo";
     }
 
+    @GetMapping("/alang")
+    public String alang() {
+        return "Hola, soy Alang.<br>Integrante del equipo Feedback Amigo";
+    }
 }
