@@ -1,4 +1,4 @@
-package com.FeedbackAmigo.demo.repository;
+/*package com.FeedbackAmigo.demo.repository;
 
 
 import com.FeedbackAmigo.demo.entity.Evaletiqueta;
@@ -11,4 +11,4 @@ import java.util.List;
 public interface EvaletiquetaRepository extends JpaRepository<Evaletiqueta, Long> {
     List<Evaletiqueta> findByIdEvaluacion(Long idEvaluacion);
 }
-
+*/

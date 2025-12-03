@@ -1,4 +1,4 @@
-package com.FeedbackAmigo.demo.dto;
+/*package com.FeedbackAmigo.demo.dto;
 
 public class EvaletiquetaDto {
     private Long id;
@@ -6,3 +6,4 @@ public class EvaletiquetaDto {
     private Long idEtiqueta;
     // getters y setters
 }
+*/

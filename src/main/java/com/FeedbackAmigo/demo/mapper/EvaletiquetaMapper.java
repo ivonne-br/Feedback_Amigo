@@ -1,4 +1,4 @@
-package com.FeedbackAmigo.demo.mapper;
+/*package com.FeedbackAmigo.demo.mapper;
 
 
 import com.FeedbackAmigo.demo.dto.EvaletiquetaDto;
@@ -8,4 +8,4 @@ public interface EvaletiquetaMapper {
     EvaletiquetaDto toDto(Evaletiqueta entity);
     Evaletiqueta toEntity(EvaletiquetaDto dto);
 
-}
+}*/

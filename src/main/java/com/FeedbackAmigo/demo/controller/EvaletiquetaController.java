@@ -1,4 +1,4 @@
-package com.FeedbackAmigo.demo.controller;
+/*package com.FeedbackAmigo.demo.controller;
 
 import com.FeedbackAmigo.demo.dto.EvaletiquetaDto;
 import com.FeedbackAmigo.demo.service.EvaletiquetaService;
@@ -27,3 +27,4 @@ public class EvaletiquetaController {
         return ResponseEntity.ok(service.findByEvaluacion(idEvaluacion));
     }
 }
+*/

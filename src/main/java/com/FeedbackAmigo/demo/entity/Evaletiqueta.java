@@ -1,4 +1,4 @@
-package com.FeedbackAmigo.demo.entity;
+/*package com.FeedbackAmigo.demo.entity;
 
 import jakarta.persistence.*;
 
@@ -36,4 +36,4 @@ public class Evaletiqueta {
         }
 
 
-}
+}*/
