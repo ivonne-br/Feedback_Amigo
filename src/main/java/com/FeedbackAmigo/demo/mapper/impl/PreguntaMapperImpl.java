@@ -4,7 +4,9 @@ import com.FeedbackAmigo.demo.dto.PreguntaDTO;
 import com.FeedbackAmigo.demo.entity.Pregunta;
 import com.FeedbackAmigo.demo.mapper.PreguntaMapper;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PreguntaMapperImpl  implements PreguntaMapper {
 
     @Override

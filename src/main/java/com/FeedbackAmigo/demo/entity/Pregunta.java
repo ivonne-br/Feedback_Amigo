@@ -10,7 +10,7 @@ public class Pregunta {
     @Id
     @Column(name = "id_pregunta")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idPregunta;
+    private Long idPregunta;
 
     @Column(name = "texto_pregunta", nullable = false, length = 255)
     private String textoPregunta;
@@ -21,11 +21,11 @@ public class Pregunta {
     @Column(length = 25)
     private String estado;
 
-    public long getIdPregunta() {
+    public Long getIdPregunta() {
         return idPregunta;
     }
 
-    public void setIdPregunta(long idPregunta) {
+    public void setIdPregunta(Long idPregunta) {
         this.idPregunta = idPregunta;
     }
 
