@@ -8,7 +8,9 @@ import jakarta.persistence.*;
 public class Licenciatura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_licenciatura")
     private long id_licenciatura;
+
     private String nombre;
     private String departamento;
 

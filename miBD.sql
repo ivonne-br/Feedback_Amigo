@@ -1,4 +1,4 @@
- -- Base de datos: Feedback_Amigo
+-- Base de datos: Feedback_Amigo
 CREATE DATABASE IF NOT EXISTS Feedback;
 use Feedback;
 
@@ -24,13 +24,32 @@ CREATE TABLE alumno (
 
 show tables;
 
- CREATE TABLE IF NOT EXISTS UEA(
-                                   id INT PRIMARY KEY AUTO_INCREMENT,
-                                   nombre VARCHAR(100) NOT NULL
- ) ENGINE InnoDB;
+INSERT INTO alumno (
+    nombre,
+    apellido_p,
+    apellido_m,
+    matricula,
+    email,
+    password,
+    id_licenciatura
+) VALUES
+      (
+          'Ivonne',
+          'Hernández',
+          'López',
+          '12345',
+          'ivonne@correo.com',
+          '12345',
+          1
+      ),
+      (
+          'Carlos',
+          'Ramírez',
+          'Santos',
+          '67890',
+          'carlos@correo.com',
+          '12345',
+          1
+      );
 
- INSERT INTO UEA(
-     nombre)
- VALUES(
-           'Laboratorio Tematico III'
-       );
+SELECT * FROM alumno;

@@ -6,7 +6,6 @@ import com.FeedbackAmigo.demo.mapper.LicenciaturaMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
-@Component
 public class LicenciaturaMapperImpl implements LicenciaturaMapper {
     @Override
     public LicenciaturaDTO toLicenciaturaDTO(Licenciatura licenciatura) {
