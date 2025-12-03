@@ -1,10 +1,11 @@
 package com.FeedbackAmigo.demo.service.impl;
 
 import com.FeedbackAmigo.demo.dto.UEADto;
-import com.FeedbackAmigo.demo.entity.UEAEntity;
+import com.FeedbackAmigo.demo.entity.UEA;
 import com.FeedbackAmigo.demo.mapper.UEAMapper;
 import com.FeedbackAmigo.demo.repository.UEARepository;
 import com.FeedbackAmigo.demo.service.UEAService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,44 +14,35 @@ import java.util.stream.Collectors;
 @Service
 public class UEAServiceImpl implements UEAService {
 
-    private final UEAMapper ueaMapper;
-    private final UEARepository ueaRepository;
+    @Autowired
+    private UEARepository ueaRepository;
 
-    public UEAServiceImpl(UEAMapper ueaMapper, UEARepository ueaRepository) {
-        this.ueaMapper = ueaMapper;
-        this.ueaRepository = ueaRepository;
-    }
+    @Autowired
+    private UEAMapper ueaMapper;
 
     @Override
     public List<UEADto> getAll() {
         return ueaRepository.findAll()
                 .stream()
-                .map(ueaMapper::toDTO)
+                .map(ueaMapper::toDto)
                 .collect(Collectors.toList());
     }
 
     @Override
     public UEADto getById(Long id) {
-        UEAEntity entity = ueaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("UEA no encontrada"));
-        return ueaMapper.toDTO(entity);
+        return ueaMapper.toDto(ueaRepository.findById(id).orElseThrow());
     }
 
     @Override
     public UEADto create(UEADto dto) {
-        UEAEntity entity = ueaMapper.toEntity(dto);
-        UEAEntity saved = ueaRepository.save(entity);
-        return ueaMapper.toDTO(saved);
+        UEA entity = ueaMapper.toEntity(dto);
+        return ueaMapper.toDto(ueaRepository.save(entity));
     }
-
     @Override
     public UEADto update(Long id, UEADto dto) {
-        UEAEntity entity = ueaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("UEA no encontrada"));
-
-        entity.setNombre(dto.getNombre());
-        UEAEntity updated = ueaRepository.save(entity);
-        return ueaMapper.toDTO(updated);
+        UEA existing = ueaRepository.findById(id).orElseThrow();
+        existing.setNombre(dto.getNombre());
+        return ueaMapper.toDto(ueaRepository.save(existing));
     }
 
     @Override
@@ -58,3 +50,5 @@ public class UEAServiceImpl implements UEAService {
         ueaRepository.deleteById(id);
     }
 }
+
+

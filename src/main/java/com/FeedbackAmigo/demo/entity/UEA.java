@@ -1,12 +1,19 @@
-package com.FeedbackAmigo.demo.dto;
+package com.FeedbackAmigo.demo.entity;
 
-public class UEADto {
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "uea")
+public class UEA {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nombre;
 
-    public UEADto() {}
+    public UEA() {}
 
-    public UEADto(Long id, String nombre) {
+    public UEA(Long id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }

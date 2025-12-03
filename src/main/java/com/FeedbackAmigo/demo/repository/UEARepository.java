@@ -1,9 +1,7 @@
 package com.FeedbackAmigo.demo.repository;
 
-import com.FeedbackAmigo.demo.entity.UEAEntity;
+import com.FeedbackAmigo.demo.entity.UEA;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface UEARepository extends JpaRepository<UEAEntity, Long> {
+public interface UEARepository extends JpaRepository<UEA, Long> {
 }

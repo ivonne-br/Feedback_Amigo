@@ -1,7 +1,6 @@
 package com.FeedbackAmigo.demo.service;
 
 import com.FeedbackAmigo.demo.dto.UEADto;
-
 import java.util.List;
 
 public interface UEAService {

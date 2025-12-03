@@ -53,3 +53,27 @@ INSERT INTO alumno (
       );
 
 SELECT * FROM alumno;
+
+CREATE TABLE IF NOT EXISTS UEA(
+                                  id INT PRIMARY KEY AUTO_INCREMENT,
+                                  nombre VARCHAR(100) NOT NULL
+) ENGINE InnoDB;
+
+INSERT INTO UEA(
+    nombre)
+VALUES(
+          'Laboratorio Tematico III'
+      );
+
+
+CREATE TABLE IF NOT EXISTS EvalEtiqueta(
+                                  id INT PRIMARY KEY AUTO_INCREMENT,
+                                  id_etiqueta INT,
+                                  FOREIGN KEY (id_etiqueta) references Etiqueta(id_etiqueta)
+) ENGINE InnoDB;
+
+INSERT INTO EvalEtiqueta(
+    id, id_etiqueta)
+VALUES(
+          1, 1
+      );

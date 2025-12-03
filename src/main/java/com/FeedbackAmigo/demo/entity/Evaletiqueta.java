@@ -2,12 +2,9 @@ package com.FeedbackAmigo.demo.entity;
 
 import jakarta.persistence.*;
 
-public class EvaletiquetaEntity {
-
-    @Entity
-    @Table(name = "evaletiqueta")
-    public class Evaletiqueta {
-
+@Entity
+@Table(name = "evaletiqueta")
+public class Evaletiqueta {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
@@ -17,7 +14,7 @@ public class EvaletiquetaEntity {
 
         @ManyToOne
         @JoinColumn(name = "id_etiqueta", nullable = false)
-        private Etiqueta etiqueta;
+        //private Etiqueta etiqueta;
 
         // getters y setters
 
@@ -38,13 +35,5 @@ public class EvaletiquetaEntity {
             this.idEvaluacion = idEvaluacion;
         }
 
-        /*public Etiqueta getEtiqueta() {
-            return etiqueta;
-        }
-
-        public void setEtiqueta(Etiqueta etiqueta) {
-            this.etiqueta = etiqueta;
-        }*/
-    }
 
 }
