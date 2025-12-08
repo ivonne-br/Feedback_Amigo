@@ -3,7 +3,7 @@ package com.FeedbackAmigo.demo.service.impl;
 import com.FeedbackAmigo.demo.dto.EvaluacionDTO;
 import com.FeedbackAmigo.demo.entity.Alumno;
 import com.FeedbackAmigo.demo.entity.Evaluacion;
-import com.FeedbackAmigo.demo.entity.UEA;
+import com.FeedbackAmigo.demo.entity.UEAEntity;
 import com.FeedbackAmigo.demo.mapper.EvaluacionMapper;
 import com.FeedbackAmigo.demo.repository.AlumnoRepository;
 import com.FeedbackAmigo.demo.repository.EvaluacionRepository;
@@ -11,7 +11,6 @@ import com.FeedbackAmigo.demo.repository.UEARepository;
 import com.FeedbackAmigo.demo.service.EvaluacionService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.LinkedList;
 
@@ -56,10 +55,10 @@ public class EvaluacionServiceImpl  implements EvaluacionService {
        Alumno evaluado = alumnoRepository.findById(dto.getIdAlumnoEvaluado())
                .orElseThrow(() -> new RuntimeException("Alumno evaluado no encontrado"));
 
-       UEA uea = ueaRepository.findById(dto.getIdUea())
+       UEAEntity ueaEntity = ueaRepository.findById(dto.getIdUea())
                .orElseThrow(() -> new RuntimeException("UEA no encontrada"));
 
-       Evaluacion evaluacion = evaluacionMapper.toEvaluacion(dto, evaluador, evaluado, uea);
+       Evaluacion evaluacion = evaluacionMapper.toEvaluacion(dto, evaluador, evaluado, ueaEntity);
 
        evaluacion = repository.save(evaluacion);
 
@@ -79,12 +78,12 @@ public class EvaluacionServiceImpl  implements EvaluacionService {
         Alumno evaluado = alumnoRepository.findById(dto.getIdAlumnoEvaluado())
                 .orElseThrow(() -> new RuntimeException("Alumno evaluado no encontrado"));
 
-        UEA uea = ueaRepository.findById(dto.getIdUea())
+        UEAEntity ueaEntity = ueaRepository.findById(dto.getIdUea())
                 .orElseThrow(() -> new RuntimeException("UEA no encontrada"));
 
         evaluacion.setAlumnoEvaluador(evaluador);
         evaluacion.setAlumnoEvaluado(evaluado);
-        evaluacion.setUea(uea);
+        evaluacion.setUea(ueaEntity);
 
         evaluacion.setAnonimo(dto.isAnonimo());
         evaluacion.setFechaEvaluacion(dto.getFechaEvaluacion());

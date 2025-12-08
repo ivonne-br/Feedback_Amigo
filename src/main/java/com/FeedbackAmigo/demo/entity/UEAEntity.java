@@ -4,16 +4,16 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "uea")
-public class UEA {
+public class UEAEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
 
-    public UEA() {}
+    public UEAEntity() {}
 
-    public UEA(Long id, String nombre) {
+    public UEAEntity(Long id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }

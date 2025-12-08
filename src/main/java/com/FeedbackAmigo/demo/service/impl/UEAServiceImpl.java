@@ -1,7 +1,7 @@
 package com.FeedbackAmigo.demo.service.impl;
 
 import com.FeedbackAmigo.demo.dto.UEADto;
-import com.FeedbackAmigo.demo.entity.UEA;
+import com.FeedbackAmigo.demo.entity.UEAEntity;
 import com.FeedbackAmigo.demo.mapper.UEAMapper;
 import com.FeedbackAmigo.demo.repository.UEARepository;
 import com.FeedbackAmigo.demo.service.UEAService;
@@ -35,12 +35,12 @@ public class UEAServiceImpl implements UEAService {
 
     @Override
     public UEADto create(UEADto dto) {
-        UEA entity = ueaMapper.toEntity(dto);
+        UEAEntity entity = ueaMapper.toEntity(dto);
         return ueaMapper.toDto(ueaRepository.save(entity));
     }
     @Override
     public UEADto update(Long id, UEADto dto) {
-        UEA existing = ueaRepository.findById(id).orElseThrow();
+        UEAEntity existing = ueaRepository.findById(id).orElseThrow();
         existing.setNombre(dto.getNombre());
         return ueaMapper.toDto(ueaRepository.save(existing));
     }

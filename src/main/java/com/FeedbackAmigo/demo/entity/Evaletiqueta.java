@@ -25,7 +25,7 @@ public class Evaletiqueta {
 
     @ManyToOne
     @JoinColumn(name = "id_uea", referencedColumnName = "id", nullable = false)
-    private UEA idUea;
+    private UEAEntity idUeaEntity;
 
 // Getters y setters
 public Long getId() { return id; }
@@ -43,6 +43,6 @@ public Long getId() { return id; }
     public Etiqueta getIdEtiqueta() { return idEtiqueta; }
     public void setIdEtiqueta(Etiqueta idEtiqueta) { this.idEtiqueta = idEtiqueta; }
 
-    public UEA getIdUea() { return idUea; }
-    public void setIdUea(UEA idUea) { this.idUea = idUea; }
+    public UEAEntity getIdUea() { return idUeaEntity; }
+    public void setIdUea(UEAEntity idUeaEntity) { this.idUeaEntity = idUeaEntity; }
 }

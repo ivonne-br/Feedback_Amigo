@@ -82,3 +82,4 @@ CREATE TABLE IF NOT EXISTS etiqueta (
                                         id_etiqueta INT PRIMARY KEY AUTO_INCREMENT,
                                         texto VARCHAR(50)
     );
+

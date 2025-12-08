@@ -32,7 +32,7 @@ public class Evaluacion {
     // UEA de la evaluación
     @ManyToOne
     @JoinColumn(name = "id_uea", nullable = false)
-    private UEA uea;
+    private UEAEntity ueaEntity;
 
     public Long getIdEvaluacion() {
         return idEvaluacion;
@@ -90,11 +90,11 @@ public class Evaluacion {
         this.calificacion = calificacion;
     }
 
-    public UEA getUea() {
-        return uea;
+    public UEAEntity getUea() {
+        return ueaEntity;
     }
 
-    public void setUea(UEA uea) {
-        this.uea = uea;
+    public void setUea(UEAEntity ueaEntity) {
+        this.ueaEntity = ueaEntity;
     }
 }

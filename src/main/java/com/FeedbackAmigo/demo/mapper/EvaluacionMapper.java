@@ -3,7 +3,7 @@ package com.FeedbackAmigo.demo.mapper;
 import com.FeedbackAmigo.demo.dto.EvaluacionDTO;
 import com.FeedbackAmigo.demo.entity.Alumno;
 import com.FeedbackAmigo.demo.entity.Evaluacion;
-import com.FeedbackAmigo.demo.entity.UEA;
+import com.FeedbackAmigo.demo.entity.UEAEntity;
 
 public interface EvaluacionMapper {
 
@@ -11,6 +11,6 @@ public interface EvaluacionMapper {
      Evaluacion toEvaluacion(EvaluacionDTO dto,
                                Alumno alumnoEvaluador,
                                Alumno alumnoEvaluado,
-                               UEA uea);
+                               UEAEntity ueaEntity);
 
 }
