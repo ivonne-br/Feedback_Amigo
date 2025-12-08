@@ -5,27 +5,38 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "respuesta")
 public class Respuesta {
-    @Id
-    @Column(name = "id_respuesta")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRespuesta;
+    @EmbeddedId
+
+    private RespuestaId id;
     private int valor;
 
 
     @ManyToOne
-    @JoinColumn(name = "id_pregunta", referencedColumnName = "id_pregunta", nullable = false)
+    @MapsId("idPregunta")
+    @JoinColumn(name = "id_pregunta", nullable = false)
     private Pregunta pregunta;
 
     @ManyToOne
-    @JoinColumn(name = "id_evaluacion", referencedColumnName = "id_evaluacion", nullable = false)
-    private Evaluacion evaluacion;
+    @MapsId("idAlumnoEvaluador")
+    @JoinColumn(name = "id_alumno_evaluador", nullable = false)
+    private Alumno alumnoEvaluador;
 
-    public Long getIdRespuesta() {
-        return idRespuesta;
+    @ManyToOne
+    @MapsId("idAlumnoEvaluado")
+    @JoinColumn(name = "id_alumno_evaluado", nullable = false)
+    private Alumno alumnoEvaluado;
+
+    @ManyToOne
+    @MapsId("idUea")
+    @JoinColumn(name = "id_uea",  nullable = false)
+    private UEAEntity uea;
+
+    public RespuestaId getId() {
+        return id;
     }
 
-    public void setIdRespuesta(Long idRespuesta) {
-        this.idRespuesta = idRespuesta;
+    public void setId(RespuestaId id) {
+        this.id = id;
     }
 
     public int getValor() {
@@ -44,11 +55,27 @@ public class Respuesta {
         this.pregunta = pregunta;
     }
 
-    public Evaluacion getEvaluacion() {
-        return evaluacion;
+    public Alumno getAlumnoEvaluador() {
+        return alumnoEvaluador;
     }
 
-    public void setEvaluacion(Evaluacion evaluacion) {
-        this.evaluacion = evaluacion;
+    public void setAlumnoEvaluador(Alumno alumnoEvaluador) {
+        this.alumnoEvaluador = alumnoEvaluador;
+    }
+
+    public Alumno getAlumnoEvaluado() {
+        return alumnoEvaluado;
+    }
+
+    public void setAlumnoEvaluado(Alumno alumnoEvaluado) {
+        this.alumnoEvaluado = alumnoEvaluado;
+    }
+
+    public UEAEntity getUea() {
+        return uea;
+    }
+
+    public void setUea(UEAEntity uea) {
+        this.uea = uea;
     }
 }

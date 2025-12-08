@@ -2,18 +2,43 @@ package com.FeedbackAmigo.demo.dto;
 
 
 public class RespuestaDTO {
-private Long idRespuesta;
+private long idAlumnoEvaluador;
+private long idAlumnoEvaluado;
+private long idUea;
+private long idPregunta;
 private int valor;
 
-private Long idPregunta;
-private Long idEvaluacion;
 
-    public Long getIdRespuesta() {
-        return idRespuesta;
+    public long getIdAlumnoEvaluador() {
+        return idAlumnoEvaluador;
     }
 
-    public void setIdRespuesta(Long idRespuesta) {
-        this.idRespuesta = idRespuesta;
+    public void setIdAlumnoEvaluador(long idAlumnoEvaluador) {
+        this.idAlumnoEvaluador = idAlumnoEvaluador;
+    }
+
+    public long getIdAlumnoEvaluado() {
+        return idAlumnoEvaluado;
+    }
+
+    public void setIdAlumnoEvaluado(long idAlumnoEvaluado) {
+        this.idAlumnoEvaluado = idAlumnoEvaluado;
+    }
+
+    public long getIdUea() {
+        return idUea;
+    }
+
+    public void setIdUea(long idUea) {
+        this.idUea = idUea;
+    }
+
+    public long getIdPregunta() {
+        return idPregunta;
+    }
+
+    public void setIdPregunta(long idPregunta) {
+        this.idPregunta = idPregunta;
     }
 
     public int getValor() {
@@ -22,21 +47,5 @@ private Long idEvaluacion;
 
     public void setValor(int valor) {
         this.valor = valor;
-    }
-
-    public Long getIdPregunta() {
-        return idPregunta;
-    }
-
-    public void setIdPregunta(Long idPregunta) {
-        this.idPregunta = idPregunta;
-    }
-
-    public Long getIdEvaluacion() {
-        return idEvaluacion;
-    }
-
-    public void setIdEvaluacion(Long idEvaluacion) {
-        this.idEvaluacion = idEvaluacion;
     }
 }
