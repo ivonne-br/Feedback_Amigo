@@ -21,28 +21,57 @@ public class Evaletiqueta {
 
     @ManyToOne
     @JoinColumn(name = "id_etiqueta", referencedColumnName = "id_etiqueta", nullable = false)
-    private Etiqueta idEtiqueta;
+    private Etiqueta etiqueta;
 
     @ManyToOne
     @JoinColumn(name = "id_uea", referencedColumnName = "id", nullable = false)
-    private UEAEntity idUeaEntity;
+    private UEAEntity ueaEntity;
 
-// Getters y setters
-public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public Long getIdEvaluacion() { return idEvaluacion; }
-    public void setIdEvaluacion(Long idEvaluacion) { this.idEvaluacion = idEvaluacion; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public Long getIdAlumnoEvaluado() { return idAlumnoEvaluado; }
-    public void setIdAlumnoEvaluado(Long idAlumnoEvaluado) { this.idAlumnoEvaluado = idAlumnoEvaluado; }
+    public Long getIdEvaluacion() {
+        return idEvaluacion;
+    }
 
-    public Long getIdAlumnoEvaluador() { return idAlumnoEvaluador; }
-    public void setIdAlumnoEvaluador(Long idAlumnoEvaluador) { this.idAlumnoEvaluador = idAlumnoEvaluador; }
+    public void setIdEvaluacion(Long idEvaluacion) {
+        this.idEvaluacion = idEvaluacion;
+    }
 
-    public Etiqueta getIdEtiqueta() { return idEtiqueta; }
-    public void setIdEtiqueta(Etiqueta idEtiqueta) { this.idEtiqueta = idEtiqueta; }
+    public Long getIdAlumnoEvaluado() {
+        return idAlumnoEvaluado;
+    }
 
-    public UEAEntity getIdUea() { return idUeaEntity; }
-    public void setIdUea(UEAEntity idUeaEntity) { this.idUeaEntity = idUeaEntity; }
+    public void setIdAlumnoEvaluado(Long idAlumnoEvaluado) {
+        this.idAlumnoEvaluado = idAlumnoEvaluado;
+    }
+
+    public Long getIdAlumnoEvaluador() {
+        return idAlumnoEvaluador;
+    }
+
+    public void setIdAlumnoEvaluador(Long idAlumnoEvaluador) {
+        this.idAlumnoEvaluador = idAlumnoEvaluador;
+    }
+
+    public Etiqueta getEtiqueta() {
+        return etiqueta;
+    }
+
+    public void setEtiqueta(Etiqueta etiqueta) {
+        this.etiqueta = etiqueta;
+    }
+
+    public UEAEntity getUeaEntity() {
+        return ueaEntity;
+    }
+
+    public void setUeaEntity(UEAEntity ueaEntity) {
+        this.ueaEntity = ueaEntity;
+    }
 }

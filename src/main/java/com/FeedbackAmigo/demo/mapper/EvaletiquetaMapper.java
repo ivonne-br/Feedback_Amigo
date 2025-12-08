@@ -8,11 +8,11 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring", uses = {EtiquetaMapper.class, UEAMapper.class})
 public interface EvaletiquetaMapper {
 
-    @Mapping(source = "idEtiqueta", target = "idEtiqueta")
-    @Mapping(source = "idUea", target = "idUea")
+    @Mapping(source = "etiqueta", target = "etiqueta")
+    @Mapping(source = "ueaEntity", target = "ueaEntity")
     EvaletiquetaDto toDto(Evaletiqueta entity);
 
-    @Mapping(source = "idEtiqueta", target = "idEtiqueta")
-    @Mapping(source = "idUea", target = "idUea")
+    @Mapping(source = "etiqueta", target = "etiqueta")
+    @Mapping(source = "ueaEntity", target = "ueaEntity")
     Evaletiqueta toEntity(EvaletiquetaDto dto);
 }

@@ -83,3 +83,27 @@ CREATE TABLE IF NOT EXISTS etiqueta (
                                         texto VARCHAR(50)
     );
 
+CREATE TABLE IF NOT EXISTS evaletiqueta(
+    id                  INT PRIMARY KEY AUTO_INCREMENT,
+    id_evaluacion       INT NOT NULL,
+    id_alumno_evaluado  INT NOT NULL,
+    id_alumno_evaluador INT NOT NULL,
+    id_etiqueta         INT NOT NULL,
+    id_uea              INT NOT NULL,
+
+    FOREIGN KEY (id_evaluacion)
+        REFERENCES evaluacion (id_evaluacion),
+
+    FOREIGN KEY (id_alumno_evaluado)
+        REFERENCES alumno (id_alumno),
+
+    FOREIGN KEY (id_alumno_evaluador)
+        REFERENCES alumno (id_alumno),
+
+    FOREIGN KEY (id_etiqueta)
+        REFERENCES etiqueta (id_etiqueta),
+
+    FOREIGN KEY (id_uea)
+        REFERENCES ueas (id)
+
+);
