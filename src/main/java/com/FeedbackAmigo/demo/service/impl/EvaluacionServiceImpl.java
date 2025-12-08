@@ -3,7 +3,7 @@ package com.FeedbackAmigo.demo.service.impl;
 import com.FeedbackAmigo.demo.dto.EvaluacionDTO;
 import com.FeedbackAmigo.demo.entity.Alumno;
 import com.FeedbackAmigo.demo.entity.Evaluacion;
-import com.FeedbackAmigo.demo.entity.UEAEntity;
+import com.FeedbackAmigo.demo.entity.UEA;
 import com.FeedbackAmigo.demo.mapper.EvaluacionMapper;
 import com.FeedbackAmigo.demo.repository.AlumnoRepository;
 import com.FeedbackAmigo.demo.repository.EvaluacionRepository;
@@ -56,7 +56,7 @@ public class EvaluacionServiceImpl  implements EvaluacionService {
        Alumno evaluado = alumnoRepository.findById(dto.getIdAlumnoEvaluado())
                .orElseThrow(() -> new RuntimeException("Alumno evaluado no encontrado"));
 
-       UEAEntity uea = ueaRepository.findById(dto.getIdUea())
+       UEA uea = ueaRepository.findById(dto.getIdUea())
                .orElseThrow(() -> new RuntimeException("UEA no encontrada"));
 
        Evaluacion evaluacion = evaluacionMapper.toEvaluacion(dto, evaluador, evaluado, uea);
@@ -79,7 +79,7 @@ public class EvaluacionServiceImpl  implements EvaluacionService {
         Alumno evaluado = alumnoRepository.findById(dto.getIdAlumnoEvaluado())
                 .orElseThrow(() -> new RuntimeException("Alumno evaluado no encontrado"));
 
-        UEAEntity uea = ueaRepository.findById(dto.getIdUea())
+        UEA uea = ueaRepository.findById(dto.getIdUea())
                 .orElseThrow(() -> new RuntimeException("UEA no encontrada"));
 
         evaluacion.setAlumnoEvaluador(evaluador);

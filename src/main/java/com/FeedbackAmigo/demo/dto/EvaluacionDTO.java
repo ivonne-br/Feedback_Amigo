@@ -1,7 +1,7 @@
 package com.FeedbackAmigo.demo.dto;
 
 import com.FeedbackAmigo.demo.entity.Alumno;
-import com.FeedbackAmigo.demo.entity.UEAEntity;
+import com.FeedbackAmigo.demo.entity.UEA;
 
 public class EvaluacionDTO {
 

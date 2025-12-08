@@ -4,7 +4,7 @@ import com.FeedbackAmigo.demo.dto.EvaluacionDTO;
 import com.FeedbackAmigo.demo.entity.Evaluacion;
 import com.FeedbackAmigo.demo.mapper.EvaluacionMapper;
 import com.FeedbackAmigo.demo.entity.Alumno;
-import com.FeedbackAmigo.demo.entity.UEAEntity;
+import com.FeedbackAmigo.demo.entity.UEA;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -32,7 +32,7 @@ public class EvaluacionMapperImpl implements EvaluacionMapper {
     public Evaluacion toEvaluacion(EvaluacionDTO dto,
                                Alumno alumnoEvaluador,
                                Alumno alumnoEvaluado,
-                               UEAEntity uea) {
+                               UEA uea) {
 
         Evaluacion evaluacion = new Evaluacion();
 

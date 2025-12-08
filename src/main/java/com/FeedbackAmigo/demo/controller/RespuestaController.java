@@ -1,6 +1,7 @@
 package com.FeedbackAmigo.demo.controller;
 
 import com.FeedbackAmigo.demo.dto.RespuestaDTO;
+import com.FeedbackAmigo.demo.entity.RespuestaId;
 import com.FeedbackAmigo.demo.service.RespuestaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,23 +22,26 @@ public class RespuestaController {
         return respuestaService.getRespuestas();
     }
 
-    @GetMapping("/{id}")
-    public RespuestaDTO getRespuestaById(@PathVariable Long id) {
-        return respuestaService.getRespuestaById(id);
+
+    @GetMapping("/{evaluacion}/{evaluador}/{evaluado}/{uea}/{pregunta}")
+    public RespuestaDTO getRespuestaById(@PathVariable long evaluacion,@PathVariable long evaluador, @PathVariable long evaluado, @PathVariable long uea, @PathVariable long pregunta) {
+        return respuestaService.getRespuestaById(new RespuestaId(evaluacion,evaluador, evaluado, uea, pregunta));
     }
 
     @PostMapping
     public RespuestaDTO create(@RequestBody RespuestaDTO respuestaDTO) {
         return respuestaService.save(respuestaDTO);
     }
-    @PutMapping("/{id}")
-    public RespuestaDTO update(@PathVariable Long id, @RequestBody RespuestaDTO respuestaDTO) {
-        return respuestaService.update(id, respuestaDTO);
+
+    @PutMapping("/{evaluacion}/{evaluador}/{evaluado}/{uea}/{pregunta}")
+    public RespuestaDTO update(@PathVariable long evaluacion,@PathVariable long evaluador, @PathVariable long evaluado, @PathVariable long uea, @PathVariable long pregunta, @RequestBody RespuestaDTO respuestaDTO) {
+        return respuestaService.update(new RespuestaId(evaluacion, evaluador, evaluado, uea, pregunta), respuestaDTO);
+
     }
 
-    @DeleteMapping("/{id}")
-    public String  delete(@PathVariable Long id) {
-        respuestaService.delete(id);
+    @DeleteMapping("/{evaluacion}/{evaluador}/{evaluado}/{uea}/{pregunta}")
+    public String  delete(@PathVariable long evaluacion, @PathVariable long evaluador, @PathVariable long evaluado, @PathVariable long uea, @PathVariable long pregunta) {
+        respuestaService.delete(new RespuestaId(evaluacion, evaluador, evaluado, uea, pregunta));
         return "Respuesta eliminada con exito";
     }
 }
