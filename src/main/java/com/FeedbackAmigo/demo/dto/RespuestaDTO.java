@@ -1,14 +1,19 @@
 package com.FeedbackAmigo.demo.dto;
 
 
-public class RespuestaDTO {
+public class RespuestaDTO { private long idEvaluacion;
 private long idAlumnoEvaluador;
 private long idAlumnoEvaluado;
 private long idUea;
 private long idPregunta;
 private int valor;
 
-
+    public long getIdEvaluacion() {
+        return idEvaluacion;
+    }
+    public void setIdEvaluacion(long idEvaluacion) {
+        this.idEvaluacion = idEvaluacion;
+    }
     public long getIdAlumnoEvaluador() {
         return idAlumnoEvaluador;
     }

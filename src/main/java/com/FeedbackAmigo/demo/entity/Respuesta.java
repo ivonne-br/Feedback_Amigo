@@ -10,6 +10,10 @@ public class Respuesta {
     private RespuestaId id;
     private int valor;
 
+    @ManyToOne
+    @MapsId("idEvaluacion")
+    @JoinColumn(name = "id_evaluacion", nullable = false)
+    private Evaluacion evaluacion;
 
     @ManyToOne
     @MapsId("idPregunta")
@@ -45,6 +49,14 @@ public class Respuesta {
 
     public void setValor(int valor) {
         this.valor = valor;
+    }
+
+    public Evaluacion getEvaluacion() {
+        return evaluacion;
+    }
+
+    public void setEvaluacion(Evaluacion evaluacion) {
+        this.evaluacion = evaluacion;
     }
 
     public Pregunta getPregunta() {

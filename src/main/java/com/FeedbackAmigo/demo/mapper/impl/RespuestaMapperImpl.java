@@ -15,6 +15,7 @@ public class RespuestaMapperImpl implements RespuestaMapper {
    @Override
    public RespuestaDTO toRespuestaDTO(Respuesta respuesta) {
        RespuestaDTO dto = new RespuestaDTO();
+       dto.setIdEvaluacion(respuesta.getId().getIdEvaluacion());
        dto.setIdAlumnoEvaluador(respuesta.getId().getIdAlumnoEvaluador());
        dto.setIdAlumnoEvaluado(respuesta.getId().getIdAlumnoEvaluado());
        dto.setIdUea(respuesta.getId().getIdUea());
@@ -28,7 +29,9 @@ public class RespuestaMapperImpl implements RespuestaMapper {
     public Respuesta toRespuesta (RespuestaDTO dto){
        Respuesta respuesta = new Respuesta();
 
-       RespuestaId id = new RespuestaId(dto.getIdAlumnoEvaluador(),
+       RespuestaId id = new RespuestaId(
+               dto.getIdEvaluacion(),
+               dto.getIdAlumnoEvaluador(),
                dto.getIdAlumnoEvaluado(),
                dto.getIdUea(),
                dto.getIdPregunta());

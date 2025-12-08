@@ -7,6 +7,7 @@ import java.util.Objects;
 
 @Embeddable
 public class RespuestaId implements Serializable {
+    private long idEvaluacion;
     private long  idAlumnoEvaluador;
     private long idAlumnoEvaluado;
     private long idUea;
@@ -14,13 +15,21 @@ public class RespuestaId implements Serializable {
 
     public RespuestaId() {}
 
-    public RespuestaId(long idAlumnoEvaluador, long idAlumnoEvaluado, long idUea, long idPregunta) {
+    public RespuestaId(long idEvaluacion, long  idAlumnoEvaluador, long idAlumnoEvaluado, long idUea, long idPregunta) {
+       this.idEvaluacion = idEvaluacion;
         this.idAlumnoEvaluador = idAlumnoEvaluador;
         this.idAlumnoEvaluado = idAlumnoEvaluado;
         this.idUea = idUea;
         this.idPregunta = idPregunta;
     }
 
+    public long getIdEvaluacion() {
+        return idEvaluacion;
+    }
+
+    public void setIdEvaluacion(long idEvaluacion) {
+        this.idEvaluacion = idEvaluacion;
+    }
     public long getIdAlumnoEvaluador() {
         return idAlumnoEvaluador;
     }
@@ -53,14 +62,15 @@ public class RespuestaId implements Serializable {
         this.idPregunta = idPregunta;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof RespuestaId that)) return false;
-        return idAlumnoEvaluador == that.idAlumnoEvaluador && idAlumnoEvaluado == that.idAlumnoEvaluado && idUea == that.idUea && idPregunta == that.idPregunta;
+        return idEvaluacion == that.idEvaluacion && idAlumnoEvaluador == that.idAlumnoEvaluador && idAlumnoEvaluado == that.idAlumnoEvaluado && idUea == that.idUea && idPregunta == that.idPregunta;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idAlumnoEvaluador, idAlumnoEvaluado, idUea, idPregunta);
+        return Objects.hash(idEvaluacion, idAlumnoEvaluador, idAlumnoEvaluado, idUea, idPregunta);
     }
 }

@@ -19,6 +19,7 @@ public class RespuestaServiceImpl implements RespuestaService {
 
     private final RespuestaMapper mapper;
     private final RespuestaRepository respuestaRepository;
+    private final EvaluacionRepository evaluacionRepository;
     private final AlumnoRepository alumnoRepository;
     private final UEARepository ueaRepository;
     private final PreguntaRepository preguntaRepository;
@@ -26,12 +27,14 @@ public class RespuestaServiceImpl implements RespuestaService {
     public RespuestaServiceImpl(
             RespuestaMapper mapper,
             RespuestaRepository respuestaRepository,
+            EvaluacionRepository evaluacionRepository,
             AlumnoRepository alumnoRepository,
             UEARepository ueaRepository,
             PreguntaRepository preguntaRepository
     ) {
         this.mapper = mapper;
         this.respuestaRepository = respuestaRepository;
+        this.evaluacionRepository = evaluacionRepository;
         this.alumnoRepository = alumnoRepository;
         this.ueaRepository = ueaRepository;
         this.preguntaRepository = preguntaRepository;
@@ -59,6 +62,11 @@ public class RespuestaServiceImpl implements RespuestaService {
         Respuesta respuesta = mapper.toRespuesta(dto);
 
         // cargar relaciones
+
+        respuesta.setEvaluacion(
+               evaluacionRepository.findById(dto.getIdEvaluacion())
+                        .orElseThrow(() -> new RuntimeException("Evaluación no encontrada"))
+        );
         respuesta.setAlumnoEvaluador(
                 alumnoRepository.findById(dto.getIdAlumnoEvaluador())
                         .orElseThrow(() -> new RuntimeException("Alumno evaluador no encontrado"))
