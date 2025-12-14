@@ -1,6 +1,7 @@
 package com.FeedbackAmigo.demo.service.impl;
 
 import com.FeedbackAmigo.demo.dto.EvaluacionDTO;
+import com.FeedbackAmigo.demo.dto.EvaluacionPatchDTO;
 import com.FeedbackAmigo.demo.entity.Alumno;
 import com.FeedbackAmigo.demo.entity.Evaluacion;
 import com.FeedbackAmigo.demo.entity.UEAEntity;
@@ -9,7 +10,9 @@ import com.FeedbackAmigo.demo.repository.AlumnoRepository;
 import com.FeedbackAmigo.demo.repository.EvaluacionRepository;
 import com.FeedbackAmigo.demo.repository.UEARepository;
 import com.FeedbackAmigo.demo.service.EvaluacionService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +68,33 @@ public class EvaluacionServiceImpl  implements EvaluacionService {
 
        return evaluacionMapper.toEvaluacionDTO(evaluacion);
    }
+
+
+    @Override
+    public EvaluacionDTO patchEvaluacion(Long id, EvaluacionPatchDTO patchDTO) {
+
+        Evaluacion evaluacion = repository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Evaluación con ID " + id + " no encontrada"
+                ));
+
+        // 🔹 Actualización parcial
+        if (patchDTO.getAnonimo() != null) {
+            evaluacion.setAnonimo(patchDTO.getAnonimo());
+        }
+
+        if (patchDTO.getComentarios() != null) {
+            evaluacion.setComentarios(patchDTO.getComentarios());
+        }
+
+
+        // Guardar cambios
+        Evaluacion actualizada = repository.save(evaluacion);
+
+        return evaluacionMapper.toEvaluacionDTO(actualizada);
+    }
+
 
 
     @Override

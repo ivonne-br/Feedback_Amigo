@@ -1,9 +1,11 @@
 package com.FeedbackAmigo.demo.controller;
 
 import com.FeedbackAmigo.demo.dto.EvaluacionDTO;
+import com.FeedbackAmigo.demo.dto.EvaluacionPatchDTO;
 import com.FeedbackAmigo.demo.entity.Evaluacion;
 import com.FeedbackAmigo.demo.service.EvaluacionService;
 import com.FeedbackAmigo.demo.service.PreguntaService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,6 +36,18 @@ public class EvaluacionController {
     public EvaluacionDTO createEvaluacion(@RequestBody EvaluacionDTO evaluacionDTO){
         return evaluacionService.save(evaluacionDTO);
     }
+
+    @PatchMapping("/evaluaciones/{id}")
+    public ResponseEntity<EvaluacionDTO> patchEvaluacion(
+            @PathVariable Long id,
+            @RequestBody EvaluacionPatchDTO patchDTO) {
+
+        EvaluacionDTO evaluacionActualizada =
+                evaluacionService.patchEvaluacion(id, patchDTO);
+
+        return ResponseEntity.ok(evaluacionActualizada);
+    }
+
 
     @PutMapping("/evaluaciones/{id}")
     public EvaluacionDTO updateEvaluacion(@PathVariable Long id, @RequestBody EvaluacionDTO evaluacionDTO){
