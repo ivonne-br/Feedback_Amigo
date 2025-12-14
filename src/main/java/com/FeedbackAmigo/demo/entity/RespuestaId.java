@@ -7,15 +7,15 @@ import java.util.Objects;
 
 @Embeddable
 public class RespuestaId implements Serializable {
-    private long idEvaluacion;
-    private long  idAlumnoEvaluador;
-    private long idAlumnoEvaluado;
-    private long idUea;
-    private long idPregunta;
+    private Long idEvaluacion;
+    private Long  idAlumnoEvaluador;
+    private Long idAlumnoEvaluado;
+    private Long idUea;
+    private Long idPregunta;
 
     public RespuestaId() {}
 
-    public RespuestaId(long idEvaluacion, long  idAlumnoEvaluador, long idAlumnoEvaluado, long idUea, long idPregunta) {
+    public RespuestaId(Long idEvaluacion, Long  idAlumnoEvaluador, Long idAlumnoEvaluado, Long idUea, Long idPregunta) {
        this.idEvaluacion = idEvaluacion;
         this.idAlumnoEvaluador = idAlumnoEvaluador;
         this.idAlumnoEvaluado = idAlumnoEvaluado;
@@ -23,42 +23,42 @@ public class RespuestaId implements Serializable {
         this.idPregunta = idPregunta;
     }
 
-    public long getIdEvaluacion() {
+    public Long getIdEvaluacion() {
         return idEvaluacion;
     }
 
-    public void setIdEvaluacion(long idEvaluacion) {
+    public void setIdEvaluacion(Long idEvaluacion) {
         this.idEvaluacion = idEvaluacion;
     }
-    public long getIdAlumnoEvaluador() {
+    public Long getIdAlumnoEvaluador() {
         return idAlumnoEvaluador;
     }
 
-    public void setIdAlumnoEvaluador(long idAlumnoEvaluador) {
+    public void setIdAlumnoEvaluador(Long idAlumnoEvaluador) {
         this.idAlumnoEvaluador = idAlumnoEvaluador;
     }
 
-    public long getIdAlumnoEvaluado() {
+    public Long getIdAlumnoEvaluado() {
         return idAlumnoEvaluado;
     }
 
-    public void setIdAlumnoEvaluado(long idAlumnoEvaluado) {
+    public void setIdAlumnoEvaluado(Long idAlumnoEvaluado) {
         this.idAlumnoEvaluado = idAlumnoEvaluado;
     }
 
-    public long getIdUea() {
+    public Long getIdUea() {
         return idUea;
     }
 
-    public void setIdUea(long idUea) {
+    public void setIdUea(Long idUea) {
         this.idUea = idUea;
     }
 
-    public long getIdPregunta() {
+    public Long getIdPregunta() {
         return idPregunta;
     }
 
-    public void setIdPregunta(long idPregunta) {
+    public void setIdPregunta(Long idPregunta) {
         this.idPregunta = idPregunta;
     }
 

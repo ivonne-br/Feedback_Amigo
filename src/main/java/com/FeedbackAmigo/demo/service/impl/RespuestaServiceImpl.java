@@ -2,6 +2,7 @@
 package com.FeedbackAmigo.demo.service.impl;
 
 import com.FeedbackAmigo.demo.dto.RespuestaDTO;
+import com.FeedbackAmigo.demo.dto.RespuestaPatchDTO;
 import com.FeedbackAmigo.demo.entity.Evaluacion;
 import com.FeedbackAmigo.demo.entity.Pregunta;
 import com.FeedbackAmigo.demo.entity.Respuesta;
@@ -9,6 +10,7 @@ import com.FeedbackAmigo.demo.entity.RespuestaId;
 import com.FeedbackAmigo.demo.mapper.RespuestaMapper;
 import com.FeedbackAmigo.demo.repository.*;
 import com.FeedbackAmigo.demo.service.RespuestaService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -90,6 +92,57 @@ public class RespuestaServiceImpl implements RespuestaService {
         respuesta = respuestaRepository.save(respuesta);
 
         return mapper.toRespuestaDTO(respuesta);
+    }
+
+
+
+    @Transactional
+    public void patchRespuesta(
+            Long idEvaluacion,
+            Long idAlumnoEvaluador,
+            Long  idAlumnoEvaluado,
+            Long  idUea,
+            Long  idPregunta,
+            RespuestaPatchDTO dto
+    ) {
+
+        RespuestaId id = new RespuestaId(
+                idEvaluacion,
+                idAlumnoEvaluador,
+                idAlumnoEvaluado,
+                idUea,
+                idPregunta
+        );
+
+        Respuesta respuesta = respuestaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Respuesta no encontrada"));
+
+        // Validación
+        if (dto.getValor() == null || dto.getValor() < 1 || dto.getValor() > 5) {
+            throw new RuntimeException("Valor inválido (1 a 5)");
+        }
+
+        // Actualizar respuesta
+        respuesta.setValor(dto.getValor());
+        respuestaRepository.save(respuesta);
+
+        // Recalcular calificación
+        recalcularCalificacion(idEvaluacion);
+    }
+
+    private void recalcularCalificacion(Long idEvaluacion) {
+        List<Respuesta> respuestas = respuestaRepository.findByIdIdEvaluacion(idEvaluacion);
+
+        double promedio = respuestas.stream()
+                .mapToInt(Respuesta::getValor)
+                .average()
+                .orElse(0);
+
+        Evaluacion evaluacion = evaluacionRepository.findById(idEvaluacion)
+                .orElseThrow(() -> new RuntimeException("Evaluación no encontrada"));
+    
+        evaluacion.setCalificacion((int) Math.round(promedio));
+        evaluacionRepository.save(evaluacion);
     }
 
     @Override

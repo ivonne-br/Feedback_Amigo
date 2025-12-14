@@ -1,6 +1,7 @@
 package com.FeedbackAmigo.demo.controller;
 
 import com.FeedbackAmigo.demo.dto.RespuestaDTO;
+import com.FeedbackAmigo.demo.dto.RespuestaPatchDTO;
 import com.FeedbackAmigo.demo.entity.RespuestaId;
 import com.FeedbackAmigo.demo.service.RespuestaService;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +33,27 @@ public class RespuestaController {
     public RespuestaDTO create(@RequestBody RespuestaDTO respuestaDTO) {
         return respuestaService.save(respuestaDTO);
     }
+
+    @PatchMapping("/{idEvaluacion}/{idAlumnoEvaluador}/{idAlumnoEvaluado}/{idUea}/{idPregunta}")
+    public ResponseEntity<Void> patchRespuesta(
+            @PathVariable Long idEvaluacion,
+            @PathVariable Long idAlumnoEvaluador,
+            @PathVariable Long idAlumnoEvaluado,
+            @PathVariable Long idUea,
+            @PathVariable Long idPregunta,
+            @RequestBody RespuestaPatchDTO dto
+    ) {
+        respuestaService.patchRespuesta(
+                idEvaluacion,
+                idAlumnoEvaluador,
+                idAlumnoEvaluado,
+                idUea,
+                idPregunta,
+                dto
+        );
+        return ResponseEntity.noContent().build();
+    }
+
 
     @PutMapping("/{evaluacion}/{evaluador}/{evaluado}/{uea}/{pregunta}")
     public RespuestaDTO update(@PathVariable long evaluacion,@PathVariable long evaluador, @PathVariable long evaluado, @PathVariable long uea, @PathVariable long pregunta, @RequestBody RespuestaDTO respuestaDTO) {
