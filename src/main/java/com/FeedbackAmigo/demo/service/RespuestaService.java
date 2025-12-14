@@ -11,6 +11,7 @@ public interface RespuestaService {
 
     List<RespuestaDTO> getRespuestas();
     RespuestaDTO getRespuestaById(RespuestaId id);
+    List<RespuestaDTO> getRespuestasByEvaluacion(Long idEvaluacion);
     RespuestaDTO save(RespuestaDTO dto);
     void patchRespuesta(Long idEvaluacion, Long idAlumnoEvaluador, Long  idAlumnoEvaluado, Long  idUea, Long  idPregunta, RespuestaPatchDTO dto);
     RespuestaDTO update(RespuestaId id, RespuestaDTO dto);

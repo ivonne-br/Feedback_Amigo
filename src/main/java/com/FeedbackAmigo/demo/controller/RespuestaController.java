@@ -29,6 +29,16 @@ public class RespuestaController {
         return respuestaService.getRespuestaById(new RespuestaId(evaluacion,evaluador, evaluado, uea, pregunta));
     }
 
+    @GetMapping("/evaluacion/{idEvaluacion}")
+    public ResponseEntity<List<RespuestaDTO>> getRespuestasByEvaluacion(
+            @PathVariable Long idEvaluacion
+    ) {
+        return ResponseEntity.ok(
+                respuestaService.getRespuestasByEvaluacion(idEvaluacion)
+        );
+    }
+
+
     @PostMapping
     public RespuestaDTO create(@RequestBody RespuestaDTO respuestaDTO) {
         return respuestaService.save(respuestaDTO);

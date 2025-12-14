@@ -58,6 +58,25 @@ public class RespuestaServiceImpl implements RespuestaService {
         return mapper.toRespuestaDTO(r);
     }
 
+
+    @Override
+    public List<RespuestaDTO> getRespuestasByEvaluacion(Long idEvaluacion) {
+
+        List<Respuesta> respuestas =
+                respuestaRepository.findById_IdEvaluacion(idEvaluacion);
+
+        if (respuestas.isEmpty()) {
+            throw new RuntimeException("No hay respuestas para esta evaluación");
+        }
+
+        List<RespuestaDTO> lista = new LinkedList<>();
+        for (Respuesta r : respuestas) {
+            lista.add(mapper.toRespuestaDTO(r));
+        }
+
+        return lista;
+    }
+
     @Override
     public RespuestaDTO save(RespuestaDTO dto) {
 
@@ -131,7 +150,7 @@ public class RespuestaServiceImpl implements RespuestaService {
     }
 
     private void recalcularCalificacion(Long idEvaluacion) {
-        List<Respuesta> respuestas = respuestaRepository.findByIdIdEvaluacion(idEvaluacion);
+        List<Respuesta> respuestas = respuestaRepository.findById_IdEvaluacion(idEvaluacion);
 
         double promedio = respuestas.stream()
                 .mapToInt(Respuesta::getValor)
@@ -140,7 +159,7 @@ public class RespuestaServiceImpl implements RespuestaService {
 
         Evaluacion evaluacion = evaluacionRepository.findById(idEvaluacion)
                 .orElseThrow(() -> new RuntimeException("Evaluación no encontrada"));
-    
+
         evaluacion.setCalificacion((int) Math.round(promedio));
         evaluacionRepository.save(evaluacion);
     }

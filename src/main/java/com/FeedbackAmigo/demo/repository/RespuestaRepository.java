@@ -10,5 +10,6 @@ import java.util.List;
 @Repository
 public interface RespuestaRepository extends JpaRepository<Respuesta, RespuestaId> {
 
-    List<Respuesta> findByIdIdEvaluacion(Long idEvaluacion);
+    //List<Respuesta> findByIdIdEvaluacion(Long idEvaluacion);
+    List<Respuesta> findById_IdEvaluacion(Long idEvaluacion);
 }
