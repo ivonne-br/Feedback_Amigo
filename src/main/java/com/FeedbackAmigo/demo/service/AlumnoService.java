@@ -11,6 +11,10 @@ public interface AlumnoService {
 
     Optional<AlumnoDTO> findById(Long id);
 
+    List<AlumnoDTO> buscarPorNombreParcial(String nombre);
+
+    List<AlumnoDTO >buscarPorNombreExacto(String nombre, String apellidoP, String apellidoM);
+
     AlumnoDTO save(AlumnoDTO dto);
 
     Optional<AlumnoDTO> findById(long id);

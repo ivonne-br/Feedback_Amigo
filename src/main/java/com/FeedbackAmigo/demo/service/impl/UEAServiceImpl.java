@@ -8,6 +8,7 @@ import com.FeedbackAmigo.demo.service.UEAService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,6 +36,20 @@ public class UEAServiceImpl implements UEAService {
                 .orElseThrow(() -> new RuntimeException("UEA no encontrada"));
         return ueaMapper.toDTO(entity);
     }
+
+
+    @Override
+    public List<UEAEntity> buscarNombreParcial(String nombre){
+        return ueaRepository.findByNombreContainingIgnoreCase(nombre);
+    }
+
+
+    @Override
+    public Optional<UEAEntity> buscarPorNombreExacto(String nombre){
+        return ueaRepository.findByNombreIgnoreCase(nombre);
+    }
+
+
 
     @Override
     public UEADto create(UEADto dto) {

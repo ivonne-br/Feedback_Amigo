@@ -71,6 +71,26 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
+    public List<AlumnoDTO> buscarPorNombreParcial(String nombre){
+        return alumnoRepository.findByNombreContainingIgnoreCase(nombre)
+                .stream()
+                .map(alumnoMapper::toAlumnoDTO)
+                .toList();
+
+    }
+
+    @Override
+    public List<AlumnoDTO> buscarPorNombreExacto(String nombre, String apellidoP, String apellidoM) {
+
+        List<Alumno> alumnos = alumnoRepository
+                .findByNombreIgnoreCaseAndApellidoPIgnoreCaseAndApellidoMIgnoreCase(nombre, apellidoP, apellidoM);
+
+        return alumnos.stream()
+                .map(alumnoMapper::toAlumnoDTO)
+                .toList();
+    }
+
+    @Override
     public void update(long id, AlumnoDTO dto){
         Alumno alumno = alumnoRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Alumno con ID" + id + "no encontrado"));
 

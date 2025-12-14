@@ -3,6 +3,7 @@ package com.FeedbackAmigo.demo.controller;
 import com.FeedbackAmigo.demo.dto.AlumnoDTO;
 import com.FeedbackAmigo.demo.service.AlumnoService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -28,6 +29,16 @@ public class AlumnoController {
         return alumnoService.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "Alumno con ID " + id + " no encontrado"));
+    }
+
+    @GetMapping("/alumno/parcial")
+    public ResponseEntity<List<AlumnoDTO>> buscarParcial(@RequestParam String nombre) {
+        return ResponseEntity.ok(alumnoService.buscarPorNombreParcial(nombre));
+    }
+
+    @GetMapping("/alumno/exacto")
+    public ResponseEntity<List<AlumnoDTO>> buscarExacto(@RequestParam String nombre, @RequestParam String apellidoP, @RequestParam String apellidoM) {
+        return ResponseEntity.ok(alumnoService.buscarPorNombreExacto(nombre, apellidoP, apellidoM));
     }
 
     @PostMapping("/alumno")
