@@ -50,7 +50,19 @@ public class EvaluacionServiceImpl  implements EvaluacionService {
 
    }
 
-   @Override
+    @Override
+    public List<EvaluacionDTO> getEvaluacionesByEvaluador(Long idAlumno) {
+
+        List<Evaluacion> evaluaciones =
+                repository.findByAlumnoEvaluador_IdAlumno(idAlumno);
+
+        return evaluaciones.stream()
+                .map(evaluacionMapper::toEvaluacionDTO)
+                .toList();
+    }
+
+
+    @Override
    public EvaluacionDTO save(EvaluacionDTO dto) {
 
        Alumno evaluador = alumnoRepository.findById(dto.getIdAlumnoEvaluador())

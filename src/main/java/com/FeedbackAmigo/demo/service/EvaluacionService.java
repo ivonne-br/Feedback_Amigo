@@ -10,6 +10,7 @@ public interface EvaluacionService {
 
     List<EvaluacionDTO> getEvaluaciones();
     EvaluacionDTO getEvaluacionById(Long id);
+    List<EvaluacionDTO> getEvaluacionesByEvaluador(Long idAlumno);
     EvaluacionDTO save(EvaluacionDTO dto);
     EvaluacionDTO patchEvaluacion(Long id, EvaluacionPatchDTO patchDTO);
     EvaluacionDTO update(Long id, EvaluacionDTO dto);

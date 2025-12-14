@@ -32,6 +32,15 @@ public class EvaluacionController {
         return evaluacionService.getEvaluacionById(id);
     }
 
+    @GetMapping("/evaluaciones/evaluador/{idAlumno}")
+    public ResponseEntity<List<EvaluacionDTO>> getEvaluacionesByEvaluador(
+            @PathVariable Long idAlumno
+    ) {
+        return ResponseEntity.ok(
+                evaluacionService.getEvaluacionesByEvaluador(idAlumno)
+        );
+    }
+
     @PostMapping("/evaluaciones")
     public EvaluacionDTO createEvaluacion(@RequestBody EvaluacionDTO evaluacionDTO){
         return evaluacionService.save(evaluacionDTO);
